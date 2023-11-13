@@ -17,7 +17,7 @@ class FormApp_Model extends CI_Model
 
     public function getAll($order = "id ASC")
     {
-        return $this->db->order_by($order)->get("forms")->result_array();
+        return $this->db->order_by($order)->get("forms")->result();
     }
 
 

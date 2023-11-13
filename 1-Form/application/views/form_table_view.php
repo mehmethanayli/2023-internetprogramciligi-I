@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Veri Tabanındaki Kayıtlar</title>
 
 	<style type="text/css">
 		::selection {
@@ -88,58 +88,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 
 	<div id="container">
-		<h1>CodeIgniter Form Uygulaması!</h1>
+		<h1>Veri Tabanındaki Kayıtlar</h1>
 
 		<div id="body">
 
-			<form action="<?php echo base_url("formApp/save") ?>" method="post">
-				<label for="isim">İsminiz: </label>
-				<input type="text" name="name" id="isim" value="<?php echo isset($formError) ? set_value("name") : "" ?>"><br><br><br>
-				<?php
-				if (isset($formError)) {
-					echo form_error("name");
-				}
-				?>
+			<table border="2px">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>İsim</th>
+						<th>Soyisim</th>
+						<th>Email</th>
+						<th>Parola</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					foreach ($items as $item) {
+					?>
+						<tr>
+							<td><?php echo $item->id; ?></td>
+							<td><?php echo $item->name; ?></td>
+							<td><?php echo $item->surname; ?></td>
+							<td><?php echo $item->email; ?></td>
+							<td><?php echo $item->pass; ?></td>
+						</tr>
 
+					<?php } ?>
 
-				<label for="soyisim">Soyisminiz: </label>
-				<input type="text" name="surname" id="soyisim" value="<?php echo isset($formError) ? set_value("surname") : "" ?>"><br><br><br>
-				<?php
-				if (isset($formError)) {
-					echo form_error("surname");
-				}
-				?>
-
-				<label for="email">Email Adresiniz: </label>
-				<input type="email" required name="email" id="email" value="<?php echo isset($formError) ? set_value("email") : "" ?>"><br><br><br>
-				<?php
-				if (isset($formError)) {
-					echo form_error("email");
-				}
-				?>
-
-				<label for="parola">Parola: </label>
-				<input type="password" name="pass" id="parola">
-				<?php
-				if (isset($formError)) {
-					echo form_error("pass");
-				}
-				?>
-				
-				<label for="parola-tekrari">Parola Tekrarı: </label>
-				<input type="password" name="re_pass" id="parola-tekrari">
-				<?php
-				if (isset($formError)) {
-					echo form_error("re_pass");
-				}
-				?>
-				<br><br>
-
-
-
-				<input type="submit" value="Formu Kaydet">
-
-			</form>
+				</tbody>
+			</table>
 
 
 
