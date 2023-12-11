@@ -118,7 +118,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				}
 				?>
 
-				<label for="parola">Parola: </label>
+				<label for="parola">Parolanız: </label>
 				<input type="password" name="pass" id="parola">
 				<?php
 				if (isset($formError)) {
@@ -126,7 +126,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				}
 				?>
 				
-				<label for="parola-tekrari">Parola Tekrarı: </label>
+				<label for="parola-tekrari">Parola Tekrarınız: </label>
 				<input type="password" name="re_pass" id="parola-tekrari">
 				<?php
 				if (isset($formError)) {
