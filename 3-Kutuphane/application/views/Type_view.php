@@ -108,6 +108,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			</form>
 
 		</div>
+		<div>
+			<table border="2px">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>Tür Adı</th>
+						<th>Durum</th>
+						<th>Oluşturulma Tarihi</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php foreach ($types as $type) { ?>
+						<tr>
+							<td><?php echo $type->id; ?></td>
+							<td><?php echo $type->name; ?></td>
+							<td><?php echo $type->status == 1 ? "Aktif" : "Pasif"; ?></td>
+							<td><?php echo $type->createdAt; ?></td>
+						</tr>
+					<?php } ?>
+
+				</tbody>
+			</table>
+		</div>
 
 		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 	</div>

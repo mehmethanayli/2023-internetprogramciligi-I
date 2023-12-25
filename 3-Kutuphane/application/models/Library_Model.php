@@ -10,4 +10,11 @@ class Library_Model extends CI_Model
     {
         return $this->db->insert("books", $data);
     }
+
+
+    public function getAllBooks($order="id ASC"){
+        return $this->db->order_by($order)->get("books")->result();
+    }
+
+
 }

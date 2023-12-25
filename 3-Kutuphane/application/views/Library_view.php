@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+//print_r($books);
+//print_r($types);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,13 +90,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 
 	<div id="container">
-		<a href="<?php echo base_url("type")?>"><button>Tür Ekleme </button></a>
+		<a href="<?php echo base_url("type") ?>"><button>Tür Ekleme </button></a>
 
 		<h1>Kitap Ekleme Modülü</h1>
 
 		<div id="body">
 			<form action="<?php echo base_url("library/save") ?>" method="post">
-			
+
 				<label>Kitap Adı:</label>
 				<input type="text" name="name">
 
@@ -105,10 +107,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<br>
 				<label>Tür:</label>
 				<select name="type">
-					<option value="Aksiyon">Aksiyon</option>
-					<option value="Hikaye">Hikaye</option>
-					<option value="Çizgi Roman">Çizgi Roman</option>
-					<option value="Roman">Roman</option>
+					<?php foreach ($types as $type) { ?>
+						<option value="<?php echo $type->id; ?>"><?php echo $type->name; ?></option>
+					<?php } ?>
 				</select>
 
 				<br>
@@ -125,6 +126,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<input type="submit" value="Formu Gönder">
 			</form>
 
+		</div>
+
+		<div>
+			<table border="2px">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>Kitap Adı</th>
+						<th>Yazar Adı</th>
+						<th>Tür</th>
+						<th>Yayınlanma Tarihi</th>
+						<th>Durum</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php foreach ($books as $book) { ?>
+						<tr>
+							<td><?php echo $book->id; ?></td>
+							<td><?php echo $book->name; ?></td>
+							<td><?php echo $book->author; ?></td>
+							<td><?php echo getTypeName($book->type); ?></td>
+							<td><?php echo $book->publish_date; ?></td>
+							<td><?php echo $book->status == 1 ? "Aktif" : "Pasif"; ?></td>
+						</tr>
+					<?php } ?>
+
+				</tbody>
+			</table>
 		</div>
 
 		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
